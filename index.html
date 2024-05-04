@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>말슴광장 리뉴얼</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <style>
+    @font-face {
+      font-family: 'Pretendard-Regular';
+      src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+      font-weight: 400;
+      font-style: normal;
+    }
+      *{
+        font-family: 'Pretendard-Regular';
+        font-style: normal;
+      }
+  </style>
+</head>
+<body class="xl:bg-white bg-gray-200">
+  <nav class="hidden xl:flex w-full top-0 left-0 bg-gray-100 flex flex-col items-center justify-center duration-500" style="z-index: 999;">
+    <div class="w-[1320px] h-[40px] flex justify-between items-center mt-[40px]">
+      <img src="./img/logo.png"/>
+      <div class="flex gap-[26px]">
+        <a href="javascript:void()" style="font-size: 13px;">로그인</a>
+        <a href="javascript:void()" style="font-size: 13px;">회원가입</a>
+      </div>
+    </div>
+    <div class="w-[1320px] h-[40px] mt-3 flex justify-between items-center">
+      <div class="flex gap-[60px] items-center">
+        <img class="cursor-pointer" src="./img/ham.png"/>
+        <ul class="flex gap-[24px]">
+          <li>
+            <a style="font-size: 16px; line-height: 24px;" href="javascript:void()">말씀영상</a>
+          </li>
+          <li>
+            <a style="font-size: 16px; line-height: 24px;" href="javascript:void()">성경자료</a>
+          </li>
+          <li>
+            <a style="font-size: 16px; line-height: 24px;" href="javascript:void()">튜터신청</a>
+          </li>
+          <li>
+            <a style="font-size: 16px; line-height: 24px;" href="javascript:void()">문화콘텐츠</a>
+          </li>
+          <li>
+            <a style="font-size: 16px; line-height: 24px;" href="javascript:void()">소개</a>
+          </li>
+          <li>
+            <a style="font-size: 16px; line-height: 24px; background-color: #6100FF; color: #fff;" class="px-2 py-0.5 rounded-md" href="javascript:void()">마이광장</a>
+          </li>
+        </ul>
+      </div>
+      <div class="w-[196px] flex items-center justify-between">
+        <div class="w-[164px] h-[20px] overflow-hidden cursor-pointer">
+          <ul id="realtime_keyword" class="flex flex-col gap-[10px] duration-300">
+            <li style="font-size: 14px; height: 20px;"><span style="color: #6100FF;">1.</span> 선악과의 의미</li>
+            <li style="font-size: 14px; height: 20px;"><span style="color: #6100FF;">2.</span> 새하늘 새땅의 의미</li>
+            <li style="font-size: 14px; height: 20px;"><span style="color: #6100FF;">3.</span> 생명나무</li>
+            <li style="font-size: 14px; height: 20px;"><span style="color: #6100FF;">4.</span> 증거장막 성전</li>
+            <li style="font-size: 14px; height: 20px;"><span style="color: #6100FF;">5.</span> 새노래</li>
+          </ul>
+          <script>
+            const realtime_keywordEl = document.querySelector("#realtime_keyword");
+            const count = realtime_keywordEl.querySelectorAll('li').length;
+            let start_num = 0;
+            setInterval(()=>{
+              realtime_keywordEl.style.transform = `translateY(-${start_num*30}px)`;
+              start_num++;
+              if(start_num >= count){
+                start_num = 0;
+              }
+            },2500)
+          </script>
+
+        </div>
+        <img src="./img/arrow_down.png"/>
+      </div>
+    </div>
+    <div id="nav_search" class="hidden relative w-[1320px] my-6 h-[60px] border rounded-full border-[#6100FF] flex bg-white items-center">
+      <img src="./img/search.png" class="w-[30px] h-[30px] ml-3"/>
+      <input class="w-full h-full outline-none px-[16px]" placeholder="검색어를 입력하세요" style="border-radius: 100px; font-size: 24px;"/>
+    </div>
+  </nav>
+  <nav class="flex xl:hidden top-0 left-0 h-[56px] items-center justify-between px-[18px]">
+    <div class="h-[24px] flex gap-3 items-center">
+      <img class="h-[24px]" src="./img/ham.png"/>
+      <img class="h-[24px]" src="./img/mb_logo.png"/>
+    </div>
+    <img class="h-[24px]" src="./img/icons/user.png"/>
+  </nav>
+  <section class="flex xl:hidden w-full max-w-[1560px] mx-auto flex flex-col items-center pt-[54px] px-[18px]">
+    <div class="relative w-full h-[60px] border rounded-full border-[#6100FF] flex bg-white items-center">
+      <img src="./img/search.png" class="w-[30px] h-[30px] ml-3"/>
+      <input class="w-full h-full outline-none px-[16px]" placeholder="검색어를 입력하세요" style="border-radius: 100px; font-size: 24px;"/>
+    </div>
+    <ul class="w-full max-w-xl gap-[28px] flex flex-wrap mt-[20px] justify-between">
+      <li class="w-full min-w-[40px] max-w-[70px]">
+        <div class="w-full min-w-[40px] max-w-[70px] min-h-[40px] max-h-[70px] bg-gray-100 cursor-pointer hover:drop-shadow-xl duration-300" style="border-radius: 6px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)">
+          <img class="w-full" src="./img/quick1.png"/>
+        </div>
+        <p class="text-center mt-[12px] md:text-base text-[12px]" style="font-weight: 400; letter-spacing: -0.025em;">1분성경</p>
+      </li>
+      <li class="w-full min-w-[40px] max-w-[70px]">
+        <div class="w-full min-w-[40px] max-w-[70px] min-h-[40px] max-h-[70px] bg-gray-100 cursor-pointer hover:drop-shadow-xl duration-300" style="border-radius: 6px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)">
+          <img class="w-full" src="./img/quick2.png"/>
+        </div>
+        <p class="text-center mt-[12px] md:text-base text-[12px]" style="font-weight: 400; letter-spacing: -0.025em;word-break: keep-all;">바이블 라이프</p>
+      </li>
+      <li class="w-full min-w-[40px] max-w-[70px]">
+        <div class="w-full min-w-[40px] max-w-[70px] min-h-[40px] max-h-[70px] bg-gray-100 cursor-pointer hover:drop-shadow-xl duration-300" style="border-radius: 6px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)">
+          <img src="./img/quick3.png"/>
+        </div>
+        <p class="text-center mt-[12px] md:text-base text-[12px]" style="font-weight: 400; letter-spacing: -0.025em;word-break: keep-all;">성경쨈과</p>
+      </li>
+      <li class="w-full min-w-[40px] max-w-[70px]">
+        <div class="w-full min-w-[40px] max-w-[70px] min-h-[40px] max-h-[70px] bg-gray-100 cursor-pointer hover:drop-shadow-xl duration-300" style="border-radius: 6px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)">
+          <img src="./img/quick4.png"/>
+        </div>
+        <p class="text-center mt-[12px] md:text-base text-[12px]" style="font-weight: 400; letter-spacing: -0.025em;word-break: keep-all;">성경쨈과2</p>
+      </li>
+      <li class="w-full min-w-[40px] max-w-[70px]">
+        <div class="w-full min-w-[40px] max-w-[70px] min-h-[40px] max-h-[70px] bg-gray-100 cursor-pointer hover:drop-shadow-xl duration-300" style="border-radius: 6px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)">
+          <img src="./img/quick5.png"/>
+        </div>
+        <p class="text-center mt-[12px] md:text-base text-[12px]" style="font-weight: 400; letter-spacing: -0.025em;word-break: keep-all;">성경동화</p>
+      </li>
+      <li class="w-full min-w-[40px] max-w-[70px]">
+        <div class="w-full min-w-[40px] max-w-[70px] min-h-[40px] max-h-[70px] bg-gray-100 cursor-pointer hover:drop-shadow-xl duration-300" style="border-radius: 6px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)">
+          <img src="./img/quick6.png"/>
+        </div>
+        <p class="text-center mt-[12px] md:text-base text-[12px]" style="font-weight: 400; letter-spacing: -0.025em;word-break: keep-all;">유쾌한 강사들</p>
+      </li>
+      <li class="w-full min-w-[40px] max-w-[70px]">
+        <div class="w-full min-w-[40px] max-w-[70px] min-h-[40px] max-h-[70px] bg-gray-100 cursor-pointer hover:drop-shadow-xl duration-300" style="border-radius: 6px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)">
+          <img src="./img/quick7.png"/>
+        </div>
+        <p class="text-center mt-[12px] md:text-base text-[12px]" style="font-weight: 400; letter-spacing: -0.025em;word-break: keep-all;">신서의 역사</p>
+      </li>
+      <li class="w-full min-w-[40px] max-w-[70px]">
+        <div class="w-full min-w-[40px] max-w-[70px] min-h-[40px] max-h-[70px] bg-gray-100 cursor-pointer hover:drop-shadow-xl duration-300" style="border-radius: 6px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)">
+          <img src="./img/quick8.png"/>
+        </div>
+        <p class="text-center mt-[12px] md:text-base text-[12px]" style="font-weight: 400; letter-spacing: -0.025em;word-break: keep-all;">갓 나온 역사</p>
+      </li>
+    </ul>
+  </section>
+  <section id="mb_banner" class="flex w-full xl:hidden px-[18px] mt-[44px] justify-center">
+    <img src="./img/mb/favorite.png" class="w-full max-w-sm"/>
+  </section>
+  <section id="mb_bible" class="flex w-full xl:hidden px-[18px] mt-[16px]">
+    <div class="w-full p-[20px] bg-white rounded-xl">
+      <h2 style="font-weight: 600; font-size: 18px; line-height: 26px;">오늘의 바이블 스터디</h2>
+      <div class="h-[196px] overflow-hidden">
+        <div style="overflow-x: scroll;">
+          <ul class="flex gap-6 mt-[18px]">
+            <li class="w-[130px] flex flex-col gap-3">
+              <div class="w-[130px] h-[130px] rounded-xl bg-gray-300"></div>
+              <div style="font-weight: 400; font-size: 13px; line-height: 18px; color: #353745;">
+                <p>성경사전</p>
+                <p>아담과 하와</p>
+              </div>
+            </li>
+            <li class="w-[130px] flex flex-col gap-3">
+              <div class="w-[130px] h-[130px] rounded-xl bg-gray-300"></div>
+              <div style="font-weight: 400; font-size: 13px; line-height: 18px; color: #353745;">
+                <p>성경사전</p>
+                <p>아담과 하와</p>
+              </div>
+            </li>
+            <li class="w-[130px] flex flex-col gap-3">
+              <div class="w-[130px] h-[130px] rounded-xl bg-gray-300"></div>
+              <div style="font-weight: 400; font-size: 13px; line-height: 18px; color: #353745;">
+                <p>성경사전</p>
+                <p>아담과 하와</p>
+              </div>
+            </li>
+            <li class="w-[130px] flex flex-col gap-3">
+              <div class="w-[130px] h-[130px] rounded-xl bg-gray-300"></div>
+              <div style="font-weight: 400; font-size: 13px; line-height: 18px; color: #353745;">
+                <p>성경사전</p>
+                <p>아담과 하와</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="mb_bible" class="flex w-full xl:hidden px-[18px] mt-[16px]">
+    <div class="w-full p-[20px] bg-white rounded-xl">
+      <h2 style="font-weight: 600; font-size: 18px; line-height: 26px;">문화 콘텐츠</h2>
+      <ul class="w-full flex flex-col gap-3 justify-between mt-[24px] items-center">
+        <li class="w-full max-w-2xl">
+          <div class="w-full bg-gray-100 rounded-xl overflow-hidden relative cursor-pointer hover:shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] duration-300">
+            <img class="w-full max-w-2xl" src="./img/demo1.png"/>
+            <img src="./img/min_logo.png" class="absolute top-3 left-3"/>
+          </div>
+          <div class="w-full mt-[10px]">
+            <p style="font-style: normal; font-weight: 400; font-size: 16px; line-height: 24px; color: #111;">성경속 나와 닮은 인물 찾기</p>
+            <p style="font-weight: 400; font-size: 20px; line-height: 28px; color: #111; ">유형테스트</p>
+          </div>
+        </li>
+        <li class="w-full max-w-2xl">
+          <div class="w-full bg-gray-100 rounded-xl overflow-hidden relative cursor-pointer hover:shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] duration-300">
+            <img class="w-full max-w-2xl" src="./img/demo2.png"/>
+            <img src="./img/min_logo.png" class="absolute top-3 left-3"/>
+          </div>
+          <div class="w-full mt-[24px]">
+            <p style="font-style: normal; font-weight: 400; font-size: 16px; line-height: 24px; color: #111;">신앙툰_맹이</p>
+            <p style="font-weight: 400; font-size: 20px; line-height: 28px; color: #111; ">웹툰</p>
+          </div>
+        </li>
+        <li class="w-full max-w-2xl">
+          <div class="w-full bg-gray-100 rounded-xl overflow-hidden relative cursor-pointer hover:shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] duration-300">
+            <img class="w-full max-w-2xl"src="./img/demo3.png"/>
+            <img src="./img/min_logo.png" class="absolute top-3 left-3"/>
+          </div>
+          <div class="w-full mt-[24px]">
+            <p style="font-style: normal; font-weight: 400; font-size: 16px; line-height: 24px; color: #111;">메리크리스마스</p>
+            <p style="font-weight: 400; font-size: 20px; line-height: 28px; color: #111; ">그림</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section id="banner" class="hidden xl:block w-full h-[300px]">
+    <img class="w-full" src="./img/banner.png"/>
+  </section>
+  <section id="search_form" class="hidden xl:flex w-full max-w-[1560px] mx-auto h-[450px] flex flex-col items-center pt-[100px]">
+    <div class="relative w-[1060px] h-[60px] border rounded-full border-[#6100FF] flex bg-white items-center">
+      <img src="./img/search.png" class="w-[30px] h-[30px] ml-3"/>
+      <input class="w-full h-full outline-none px-[16px]" placeholder="검색어를 입력하세요" style="border-radius: 100px; font-size: 24px;"/>
+    </div>
+    <ul class="w-[1060px] flex mt-[54px] justify-between">
+      <li class="w-[70px]">
+        <div class="w-[70px] h-[70px] bg-gray-100 cursor-pointer hover:drop-shadow-xl duration-300" style="border-radius: 6px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)">
+          <img src="./img/quick1.png"/>
+        </div>
+        <p class="text-center mt-[12px]" style="font-weight: 400; font-size: 16px; line-height: 24px; letter-spacing: -0.025em;">1분성경</p>
+      </li>
+      <li class="w-[70px]">
+        <div class="w-[70px] h-[70px] bg-gray-100 cursor-pointer hover:drop-shadow-xl duration-300" style="border-radius: 6px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)">
+          <img src="./img/quick2.png"/>
+        </div>
+        <p class="text-center mt-[12px]" style="font-weight: 400; font-size: 16px; line-height: 24px; letter-spacing: -0.025em;word-break: keep-all;">바이블 라이프</p>
+      </li>
+      <li class="w-[70px]">
+        <div class="w-[70px] h-[70px] bg-gray-100 cursor-pointer hover:drop-shadow-xl duration-300" style="border-radius: 6px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)">
+          <img src="./img/quick3.png"/>
+        </div>
+        <p class="text-center mt-[12px]" style="font-weight: 400; font-size: 16px; line-height: 24px; letter-spacing: -0.025em;word-break: keep-all;">성경쨈과</p>
+      </li>
+      <li class="w-[70px]">
+        <div class="w-[70px] h-[70px] bg-gray-100 cursor-pointer hover:drop-shadow-xl duration-300" style="border-radius: 6px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)">
+          <img src="./img/quick4.png"/>
+        </div>
+        <p class="text-center mt-[12px]" style="font-weight: 400; font-size: 16px; line-height: 24px; letter-spacing: -0.025em;word-break: keep-all;">성경쨈과2</p>
+      </li>
+      <li class="w-[70px]">
+        <div class="w-[70px] h-[70px] bg-gray-100 cursor-pointer hover:drop-shadow-xl duration-300" style="border-radius: 6px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)">
+          <img src="./img/quick5.png"/>
+        </div>
+        <p class="text-center mt-[12px]" style="font-weight: 400; font-size: 16px; line-height: 24px; letter-spacing: -0.025em;word-break: keep-all;">성경동화</p>
+      </li>
+      <li class="w-[70px]">
+        <div class="w-[70px] h-[70px] bg-gray-100 cursor-pointer hover:drop-shadow-xl duration-300" style="border-radius: 6px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)">
+          <img src="./img/quick6.png"/>
+        </div>
+        <p class="text-center mt-[12px]" style="font-weight: 400; font-size: 16px; line-height: 24px; letter-spacing: -0.025em;word-break: keep-all;">유쾌한 강사들</p>
+      </li>
+      <li class="w-[70px]">
+        <div class="w-[70px] h-[70px] bg-gray-100 cursor-pointer hover:drop-shadow-xl duration-300" style="border-radius: 6px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)">
+          <img src="./img/quick7.png"/>
+        </div>
+        <p class="text-center mt-[12px]" style="font-weight: 400; font-size: 16px; line-height: 24px; letter-spacing: -0.025em;word-break: keep-all;">신서의 역사</p>
+      </li>
+      <li class="w-[70px]">
+        <div class="w-[70px] h-[70px] bg-gray-100 cursor-pointer hover:drop-shadow-xl duration-300" style="border-radius: 6px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)">
+          <img src="./img/quick8.png"/>
+        </div>
+        <p class="text-center mt-[12px]" style="font-weight: 400; font-size: 16px; line-height: 24px; letter-spacing: -0.025em;word-break: keep-all;">갓 나온 역사</p>
+      </li>
+      <li class="w-[70px]">
+        <div class="w-[70px] h-[70px] bg-gray-100 cursor-pointer hover:drop-shadow-xl duration-300" style="border-radius: 6px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)">
+          <img src="./img/quick9.png"/>
+        </div>
+        <p class="text-center mt-[12px]" style="font-weight: 400; font-size: 16px; line-height: 24px; letter-spacing: -0.025em; word-break: keep-all; ">성경 읽어 주는 남자</p>
+      </li>
+      <li class="w-[70px]">
+        <div class="w-[70px] h-[70px] bg-gray-100 cursor-pointer hover:drop-shadow-xl duration-300" style="border-radius: 6px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)">
+          <img src="./img/quick10.png"/>
+        </div>
+        <p class="text-center mt-[12px]" style="font-weight: 400; font-size: 16px; line-height: 24px; letter-spacing: -0.025em;word-break: keep-all;">바이블 프리즘</p>
+      </li>
+    </ul>
+  </section>
+  <section id="recommendations" class="hidden xl:flex w-full justify-center mt-[100px]">
+    <div class="w-[1320px] flex flex-col justify-start px-[20px]">
+      <p style="font-style: normal; font-weight: 600; font-size: 20px; line-height: 28px; letter-spacing: -0.025em; color: #111;">추천인기영상</p>
+      <ul class="w-full flex justify-between mt-[24px]">
+        <li class="w-[400px]">
+          <div class="w-[400px] h-[223px] bg-gray-100 rounded-xl overflow-hidden relative cursor-pointer hover:shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] duration-300">
+            <img src="./img/recomand1.png"/>
+          </div>
+          <div class="w-full mt-[24px]">
+            <p style="font-style: normal; font-weight: 400; font-size: 16px; line-height: 24px; color: #111;">바이블라이프 | 조회수 2.3만</p>
+            <p style="font-weight: 400; font-size: 20px; line-height: 28px; color: #111; ">Lorem, ipsum dolor.</p>
+          </div>
+        </li>
+        <li class="w-[400px]">
+          <div class="w-[400px] h-[223px] bg-gray-100 rounded-xl overflow-hidden relative cursor-pointer hover:shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] duration-300">
+            <img src="./img/recomand2.png"/>
+          </div>
+          <div class="w-full mt-[24px]">
+            <p style="font-style: normal; font-weight: 400; font-size: 16px; line-height: 24px; color: #111;">바이블라이프 | 조회수 2.3만</p>
+            <p style="font-weight: 400; font-size: 20px; line-height: 28px; color: #111; ">Lorem, ipsum dolor.</p>
+          </div>
+        </li>
+        <li class="w-[400px]">
+          <div class="w-[400px] h-[223px] bg-gray-100 rounded-xl overflow-hidden relative cursor-pointer hover:shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] duration-300">
+            <img src="./img/recoman3.png"/>
+          </div>
+          <div class="w-full mt-[24px]">
+            <p style="font-style: normal; font-weight: 400; font-size: 16px; line-height: 24px; color: #111;">바이블라이프 | 조회수 2.3만</p>
+            <p style="font-weight: 400; font-size: 20px; line-height: 28px; color: #111; ">Lorem, ipsum dolor.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section id="recommendations" class="hidden xl:flex w-full justify-center mt-[100px]">
+    <div class="w-[1320px] flex flex-col justify-start px-[20px]">
+      <p style="font-style: normal; font-weight: 600; font-size: 20px; line-height: 28px; letter-spacing: -0.025em; color: #111;">오늘의 바이블 스터디</p>
+      <ul class="w-full flex justify-between mt-[24px]">
+        <li class="w-[400px]">
+          <div class="w-[400px] h-[223px] bg-gray-100 rounded-xl overflow-hidden relative cursor-pointer hover:shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] duration-300">
+            <img src="./img/bible1.png"/>
+            <img src="./img/min_logo.png" class="absolute top-3 left-3"/>
+          </div>
+          <div class="w-full mt-[24px]">
+            <p style="font-style: normal; font-weight: 400; font-size: 16px; line-height: 24px; color: #111;">바이블라이프 | 조회수 2.3만</p>
+            <p style="font-weight: 400; font-size: 20px; line-height: 28px; color: #111; ">Lorem, ipsum dolor.</p>
+          </div>
+        </li>
+        <li class="w-[400px]">
+          <div class="w-[400px] h-[223px] bg-gray-100 rounded-xl overflow-hidden relative cursor-pointer hover:shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] duration-300">
+            <img src="./img/bible2.png"/>
+            <img src="./img/min_logo.png" class="absolute top-3 left-3"/>
+          </div>
+          <div class="w-full mt-[24px]">
+            <p style="font-style: normal; font-weight: 400; font-size: 16px; line-height: 24px; color: #111;">바이블라이프 | 조회수 2.3만</p>
+            <p style="font-weight: 400; font-size: 20px; line-height: 28px; color: #111; ">Lorem, ipsum dolor.</p>
+          </div>
+        </li>
+        <li class="w-[400px]">
+          <div class="w-[400px] h-[223px] bg-gray-100 rounded-xl overflow-hidden relative cursor-pointer hover:shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] duration-300">
+            <img src="./img/bible3.png"/>
+            <img src="./img/min_logo.png" class="absolute top-3 left-3"/>
+          </div>
+          <div class="w-full mt-[24px]">
+            <p style="font-style: normal; font-weight: 400; font-size: 16px; line-height: 24px; color: #111;">바이블라이프 | 조회수 2.3만</p>
+            <p style="font-weight: 400; font-size: 20px; line-height: 28px; color: #111; ">Lorem, ipsum dolor.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section id="mini-banner" class="hidden xl:flex w-full justify-center mt-[100px]">
+    <ul class="w-[1320px] h-[180px]">
+      <li class="w-fuill h-full bg-pink-100 overflow-hidden">
+        <img class="w-full" src="./img/min_banner.png"/>
+      </li>
+    </ul>
+  </section>
+  <section id="recommendations" class="w-full hidden xl:flex justify-center mt-[100px]">
+    <div class="w-[1320px] flex flex-col justify-start px-[20px]">
+      <p style="font-style: normal; font-weight: 600; font-size: 20px; line-height: 28px; letter-spacing: -0.025em; color: #111;">문화콘텐츠</p>
+      <ul class="w-full flex justify-between mt-[24px]">
+        <li class="w-[290px]">
+          <div class="w-[290px] h-[162px] bg-gray-100 rounded-xl overflow-hidden relative cursor-pointer hover:shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] duration-300">
+            <img src="./img/demo1.png"/>
+            <img src="./img/min_logo.png" class="absolute top-3 left-3"/>
+          </div>
+          <div class="w-full mt-[24px]">
+            <p style="font-style: normal; font-weight: 400; font-size: 16px; line-height: 24px; color: #111;">성경속 나와 닮은 인물 찾기</p>
+            <p style="font-weight: 400; font-size: 20px; line-height: 28px; color: #111; ">유형테스트</p>
+          </div>
+        </li>
+        <li class="w-[290px]">
+          <div class="w-[290px] h-[162px] bg-gray-100 rounded-xl overflow-hidden relative cursor-pointer hover:shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] duration-300">
+            <img src="./img/demo2.png"/>
+            <img src="./img/min_logo.png" class="absolute top-3 left-3"/>
+          </div>
+          <div class="w-full mt-[24px]">
+            <p style="font-style: normal; font-weight: 400; font-size: 16px; line-height: 24px; color: #111;">신앙툰_맹이</p>
+            <p style="font-weight: 400; font-size: 20px; line-height: 28px; color: #111; ">웹툰</p>
+          </div>
+        </li>
+        <li class="w-[290px]">
+          <div class="w-[290px] h-[162px] bg-gray-100 rounded-xl overflow-hidden relative cursor-pointer hover:shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] duration-300">
+            <img src="./img/demo3.png"/>
+            <img src="./img/min_logo.png" class="absolute top-3 left-3"/>
+          </div>
+          <div class="w-full mt-[24px]">
+            <p style="font-style: normal; font-weight: 400; font-size: 16px; line-height: 24px; color: #111;">메리크리스마스</p>
+            <p style="font-weight: 400; font-size: 20px; line-height: 28px; color: #111; ">그림</p>
+          </div>
+        </li>
+        <li class="w-[290px]">
+          <div class="w-[290px] h-[162px] bg-gray-100 rounded-xl overflow-hidden relative cursor-pointer hover:shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] duration-300">
+            <img src="./img/demo4.png"/>
+            <img src="./img/min_logo.png" class="absolute top-3 left-3"/>
+          </div>
+          <div class="w-full mt-[24px]">
+            <p style="font-style: normal; font-weight: 400; font-size: 16px; line-height: 24px; color: #111;">눅8:11</p>
+            <p style="font-weight: 400; font-size: 20px; line-height: 28px; color: #111; ">캘리</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section class="w-full flex justify-center xl:mt-[100px] mt-[16px]">
+    <div class="xl:w-[1280px] w-full md:h-[76px] flex sm:flex-row flex-col sm:justify-between xl:gap-0 gap-3 px-[20px]">
+      <ul class="flex gap-3 md:items-center sm:flex-row flex-col">
+        <li style="font-size: 14px; line-height: 20px; color: #505050; cursor: pointer;">이용약관</li>
+        <li class="md:block hidden" style="font-size: 14px; line-height: 20px; color: #505050;">|</li>
+        <li style="font-size: 14px; line-height: 20px; color: #505050; cursor: pointer;">개인정보처리방침</li>
+        <li class="md:block hidden" style="font-size: 14px; line-height: 20px; color: #505050;">|</li>
+        <li style="font-size: 14px; line-height: 20px; color: #505050; cursor: pointer;">이메일 무단수집 거부</li>
+        <li class="md:block hidden" style="font-size: 14px; line-height: 20px; color: #505050;">|</li>
+        <li class="font-semibold" style="font-size: 14px; line-height: 20px; color: #111; cursor: pointer;">사이트맵</li>
+      </ul>
+      <ul class="flex gap-3 items-center md:mb-0 mb-6">
+        <li class="w-[20px] h-[20px] overflow-hidden cursor-pointer">
+          <img class="w-full" src="./img/icons/facebook.png"/>
+        </li>
+        <li class="w-[20px] h-[20px] overflow-hidden cursor-pointer">
+          <img class="w-full" src="./img/icons/insta.png"/>
+        </li>
+        <li class="w-[20px] h-[20px] overflow-hidden cursor-pointer">
+          <img class="w-full" src="./img/icons/kakao.png"/>
+        </li>
+        <li class="w-[20px] h-[20px] overflow-hidden cursor-pointer">
+          <img class="w-full" src="./img/icons/youtube.png"/>
+        </li>
+        <li class="w-[20px] h-[20px] overflow-hidden cursor-pointer">
+          <img class="w-full" src="./img/icons/xmark.png"/>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <footer class="w-full flex justify-center" style="border-top: 1px solid #505050;">
+    <div class="w-[1280px] flex xl:flex-row flex-col xl:justify-between px-[20px] pt-[32px] xl:py-[130px] py-[60px]">
+      <div>
+        <h2 style="font-weight: 600; font-size: 24px; line-height: 34px; color: #111;">말씀광장</h2>
+        <p style="font-size: 13px; line-height: 1.6; color: #505050;" class="mt-[12px]">
+          (우) 13837 경기 과천시 별양사 2로 14<br/>
+          개인정보보호책임자 : 홍길동<br/>
+          말씀광장 대표 이메일 : wordwquarehelp@gmail.com<br/>
+          Copyright ⓒ SHINCHEONJI CHURCH. ALL RIGHTS RESERVED
+        </p>
+      </div>
+      <div class="flex flex-col xl:items-end xl:justify-start">
+        <p style="font-size: 14px; font-weight: 400; line-height: 20px; color: #505050;">오전9시 ~ 오후 6시(토요일, 공휴일 휴무)</p>
+        <div class="flex gap-3 mt-3">
+          <button class="border border-solid border-gray-300 px-1" style="font-weight: 400; font-size: 12px; line-height: 1.8; color: #111;">1:1 문의하기</button>
+          <button class="border border-solid border-gray-300 px-1" style="font-weight: 400; font-size: 12px; line-height: 1.8; color: #111;">자주 묻는 질문</button>
+        </div>
+      </div>
+    </div>
+  </footer>  
+</body>
+<script>
+  const navEl = document.querySelector('nav');
+  const nav_searchEl = document.querySelector('#nav_search');
+  window.addEventListener("scroll", ()=>{
+    const top = window.scrollY;
+    top>60 ? navEl.classList.add('fixed') : navEl.classList.remove('fixed');
+    top>250 ? nav_searchEl.classList.remove('hidden') : nav_searchEl.classList.add('hidden');
+    
+  })
+</script>
+</html>
+
